@@ -21,13 +21,10 @@ namespace OceanDemoProj
         public const int DEFAULT_COUNT_ON_AREA = 50;
         public const int DEFAULT_GROWTH_SPEED = 3;
         public const int DEFAULT_RND_ACTION = 4;
-        public const int DEFAULT_COORD_X = 1;
-        public const int DEFAULT_COORD_Y = 1;
-
-        public const char DEFAULT_IMAGE = '■';
+       
         public const char DEFAULT_OBSTACLE_IMAGE = '#';
-        //public const char DEFAULT_BORDER_IMAGE = '▬';
         public const char DEFAULT_PREY_IMAGE = 'f';
         public const char DEFAULT_PREDATOR_IMAGE = 'S';
+        public const char NO_IMAGE = ' ';
     }
 }

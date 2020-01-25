@@ -10,8 +10,8 @@ namespace OceanDemoProj
     {
         #region =====----- PRIVATE DATA -----=====
 
-        private readonly Ocean _owner;
-        private Coordinate _coordinate;
+        protected readonly Ocean _owner;
+        protected Coordinate _coordinate;
 
         #endregion
 
@@ -31,6 +31,10 @@ namespace OceanDemoProj
         }
 
         #endregion
+
+        public abstract char Image { get; }
+
+        //public abstract void AddEntity(Cell someEntity);
 
     }
 }

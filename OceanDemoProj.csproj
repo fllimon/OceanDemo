@@ -46,6 +46,7 @@
     <Compile Include="Cell.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Constants\DefaultSettings.cs" />
+    <Compile Include="Enum\DefaultImage.cs" />
     <Compile Include="Obstacle.cs" />
     <Compile Include="Ocean.cs" />
     <Compile Include="Predator.cs" />
@@ -54,7 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randomyzer.cs" />
     <Compile Include="Seaweed.cs" />
-    <Compile Include="UI.cs" />
+    <Compile Include="OceanConsoleViwer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

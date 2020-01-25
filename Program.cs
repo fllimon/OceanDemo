@@ -11,13 +11,15 @@ namespace OceanDemoProj
         static void Main(string[] args)
         {
             Coordinate coordinate = new Coordinate(0, 0);
-            Ocean ocean = new Ocean();
-            Predator predator = new Predator(ocean, coordinate);
-            Obstacle obstacle = new Obstacle(ocean, coordinate);
-            Prey prey = new Prey(ocean, coordinate);
-            ocean.AddPredator(predator);
-            //ocean.AddObstacle(obstacle);
-            //ocean.AddPrey(prey);
+            Ocean oceanFirst = new Ocean();
+            Predator predator = new Predator(oceanFirst, coordinate);
+            Obstacle obstacle = new Obstacle(oceanFirst, coordinate);
+            Prey prey = new Prey(oceanFirst, coordinate);
+            OceanConsoleViwer viewEntity = new OceanConsoleViwer(oceanFirst);
+
+            oceanFirst.Run();
+            viewEntity.Show();
+
             Console.ReadKey();
         }
     }

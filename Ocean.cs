@@ -4,36 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using OceanDemoProj.Enum;
+
 namespace OceanDemoProj
 {
-    class Ocean //: Cell
+    class Ocean
     {
         #region ======----- PRIVATE DATA -----=====
 
-        private char _defaultImage;
         private int _numRows = -1;
         private int _numCols = -1;
+        private int _numPrey = -1;
+        private int _numPredator = -1;
         private int _numObstacle = -1;
+        private int _timeToReproduce = -1;
+        private int _timeToFeed = -1;
         //private int _size = -1;
         private Cell[,] _cells;
-
 
         #endregion
 
         #region ======------ PROPERTIES ------=======
-
-        public char DefaultImage
-        {
-            get
-            {
-                return _defaultImage;
-            }
-
-            set
-            {
-                _defaultImage = value;
-            }
-        }
 
         public int NumRows
         {
@@ -61,6 +52,32 @@ namespace OceanDemoProj
             }
         }
 
+        public int NumPrey
+        {
+            get
+            {
+                return _numPrey;
+            }
+
+            set
+            {
+                _numPrey = value;
+            }
+        }
+
+        public int NumPredator
+        {
+            get
+            {
+                return _numPredator;
+            }
+
+            set
+            {
+                _numPredator = value;
+            }
+        }
+
         public int NumObstacle
         {
             get
@@ -78,34 +95,42 @@ namespace OceanDemoProj
 
         #region =====----- INDEXER -----=====
 
-        public Cell this[int firstIndex, int secondIndex]
+        public char this[int firstIndex, int secondIndex]
         {
             get
             {
-                return _cells[firstIndex, secondIndex];
+                char img = (char)DefaultImage.NoImage;
+
+                if (_cells[firstIndex, secondIndex] != null)
+                {
+                    img = _cells[firstIndex, secondIndex].Image;
+                }
+
+                return img;
             }
 
-            set
-            {
-                _cells[firstIndex, secondIndex] = value;
-            }
         }
 
         #endregion
 
         #region =====----- CTOR -----=====
 
-        public Ocean(char defaultImage = DefaultSettings.DEFAULT_IMAGE,
-                int numRows = DefaultSettings.DEFAULT_NUM_ROWS,
+        public Ocean(int numRows = DefaultSettings.DEFAULT_NUM_ROWS,
                 int numCols = DefaultSettings.DEFAULT_NUM_COLS,
-                int numObstacle = DefaultSettings.DEFAULT_NUM_OBSTACLE)
+                int numPrey = DefaultSettings.DEFAULT_NUM_PREY,
+                int numPredator = DefaultSettings.DEFAULT_NUM_PREDATORS,
+                int numObstacle = DefaultSettings.DEFAULT_NUM_OBSTACLE,
+                int timeToReproduce = DefaultSettings.DEFAULT_TIME_TO_REPRODUCE,
+                int timeToFeed = DefaultSettings.DEFAULT_TIME_TO_FEED)
         {
-            _defaultImage = defaultImage;
             _numRows = numRows;
             _numCols = numCols;
+            _numPrey = numPrey;
+            _numPredator = numPredator;
             _numObstacle = numObstacle;
+            _timeToReproduce = timeToReproduce;
+            _timeToFeed = timeToFeed;
             _cells = new Cell[_numRows, _numCols];
-            GetInitCells();
         }
 
         #endregion
@@ -118,17 +143,18 @@ namespace OceanDemoProj
             do
             {
                 coordinate = random.GetRandomCoordinate(_numRows, _numCols);
+
                 break;
             } while (_cells[coordinate.X, coordinate.Y] == null);
 
             return coordinate;
         }
 
-        public void AddObstacle(Obstacle obstacle)    
+        public void AddObstacle()
         {
             Coordinate coordinate;
 
-            for (int i = 0; i < obstacle.CountObstacle; i++)
+            for (int i = 0; i < _numObstacle; i++)
             {
                 coordinate = GetCoordEmptyCell();
 
@@ -136,28 +162,23 @@ namespace OceanDemoProj
             }
         }
 
-        public void AddPredator(Predator predator)    
+        public void AddPredator()
         {
             Coordinate coordinate;
-            
-            for (int i = 0; i <= predator.NumPredator; i++)
+
+            for (int i = 0; i < _numPredator; i++)
             {
                 coordinate = GetCoordEmptyCell();
 
                 _cells[coordinate.X, coordinate.Y] = new Predator(this, coordinate);
-                //if (coordinate.X == _defaultImage && coordinate.Y == _defaultImage)
-                //{
-                //    _defaultImage = predator.DefaultPredatorImages;
-                //    Console.Write($"{_defaultImage}");
-                //}
             }
         }
 
-        public void AddPrey(Prey prey)    
+        public void AddPrey()
         {
             Coordinate coordinate;
 
-            for (int i = 0; i < prey.PreyCount; i++)
+            for (int i = 0; i < _numPrey; i++)
             {
                 coordinate = GetCoordEmptyCell();
 
@@ -165,33 +186,25 @@ namespace OceanDemoProj
             }
         }
 
-        public void AddSeaweed(Seaweed seaweed)    
+        public void Run()
         {
-            Coordinate coordinate;
-
-            for (int i = 0; i < seaweed.SeaweedCount; i++)
-            {
-                coordinate = GetCoordEmptyCell();
-
-                _cells[coordinate.X, coordinate.Y] = new Seaweed(this, coordinate);
-                
-            }
+            AddPrey();
+            AddPredator();
+            AddObstacle();
         }
 
-        private void GetInitCells()
-        {
-            for (int i = 0; i < _cells.GetLength(0); i++)
-            {
-                Console.Write("\n");
+        //public void AddSeaweed(Seaweed seaweed)    
+        //{
+        //    Coordinate coordinate;
 
-                for (int j = 0; j < _cells.GetLength(1); j++)
-                {
+        //    for (int i = 0; i < seaweed.SeaweedCount; i++)
+        //    {
+        //        coordinate = GetCoordEmptyCell();
 
-                    //Console.Write($"{_defaultImage}");
-                }
-            }
+        //        _cells[coordinate.X, coordinate.Y] = new Seaweed(this, coordinate);
 
-            Console.Write("\n");
-        }
+        //    }
+        //}
+
     }
 }

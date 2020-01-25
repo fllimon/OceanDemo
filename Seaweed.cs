@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OceanDemoProj
 {
-    class Seaweed : Prey
+    class Seaweed //: Prey
     {
         #region =====----- PRIVATE DATA -----===== 
 
@@ -76,7 +76,7 @@ namespace OceanDemoProj
         #region =====----- CTOR ----=====
 
         public Seaweed(Ocean owner, Coordinate coordinate)
-            : base(owner, coordinate)
+            //: base(owner, coordinate)
         {
             _numSeaweed = DefaultSettings.DEFAULT_NUM_SEAWEED;
             _growthSpeed = DefaultSettings.DEFAULT_GROWTH_SPEED;
