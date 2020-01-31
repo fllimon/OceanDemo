@@ -8,6 +8,8 @@ namespace OceanDemoProj
 {
     class Randomyzer
     {
+        public static Random rndAction = new Random();
+
         #region =====----- PRIVATE DATA -----=====
 
         private Random _random;

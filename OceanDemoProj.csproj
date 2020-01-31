@@ -47,8 +47,10 @@
     <Compile Include="Coordinate.cs" />
     <Compile Include="Constants\DefaultSettings.cs" />
     <Compile Include="Enum\DefaultImage.cs" />
+    <Compile Include="Enum\RandomDirection.cs" />
     <Compile Include="Obstacle.cs" />
     <Compile Include="Ocean.cs" />
+    <Compile Include="OceanRandomInitializer.cs" />
     <Compile Include="Predator.cs" />
     <Compile Include="Prey.cs" />
     <Compile Include="Program.cs" />

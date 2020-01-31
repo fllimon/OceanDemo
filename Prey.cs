@@ -10,6 +10,8 @@ namespace OceanDemoProj
 {
     class Prey : Cell
     {
+        
+
         #region ======----- PROPERTIES -----=====
 
         public override char Image 
@@ -31,14 +33,6 @@ namespace OceanDemoProj
         }
 
         #endregion
-
-        //public override void AddEntity(Cell someEntity)
-        //{
-        //    for (int i = 0; i < someEntity.; i++)
-        //    {
-
-        //    }
-        //}
 
     }
 }

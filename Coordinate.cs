@@ -53,6 +53,12 @@ namespace OceanDemoProj
             _y = y;
         }
 
+        public Coordinate(Coordinate source)    // ctor of copy
+            : this(source._x, source._y)   
+        {
+
+        }
+
         #endregion
     }
 }

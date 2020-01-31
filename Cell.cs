@@ -32,9 +32,19 @@ namespace OceanDemoProj
 
         #endregion
 
+        #region ======------ PROPERTIES ------======
+
+        public Coordinate Position 
+        {
+            get
+            {
+                return new Coordinate(_coordinate);
+            }  
+        }
+
         public abstract char Image { get; }
 
-        //public abstract void AddEntity(Cell someEntity);
+        #endregion
 
     }
 }
