@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 using OceanDemoProj.Enum;
+using OceanDemoProj.Interface;
 
 namespace OceanDemoProj
 {
-    class Ocean
+    class Ocean : ICellContainer, IOceanView
     {
         #region ======----- PRIVATE DATA -----=====
 
@@ -29,11 +30,6 @@ namespace OceanDemoProj
             {
                 return _numRows;
             }
-
-            set
-            {
-                _numRows = value;
-            }
         }
 
         public int NumCols
@@ -41,11 +37,6 @@ namespace OceanDemoProj
             get
             {
                 return _numCols;
-            }
-
-            set
-            {
-                _numCols = value;
             }
         }
 
@@ -97,6 +88,64 @@ namespace OceanDemoProj
             _cells[someEntity.Position.X, someEntity.Position.Y] = someEntity;
         }
 
-       
+        public int GetDeltaX(Ocean ocean, Cell someEntity)
+        {
+            return ocean.NumRows - someEntity.Position.X;
+        }
+
+        public int GetDeltaY(Ocean ocean, Cell someEntity)
+        {
+            return ocean.NumCols - someEntity.Position.Y;
+        }
+
+        public void SetPositionXY(Cell someEntity, ref int positionXY, string operation)
+        {
+            switch (operation)
+            {
+                case "+=":
+                    if (someEntity.MoveSpeed == 1)
+                    {
+                        positionXY += someEntity.MoveSpeed;
+                    }
+                    else
+                    {
+                        positionXY += someEntity.MoveSpeed - 1;
+                    }
+                    break;
+                case "-=":
+                    if (someEntity.MoveSpeed == 1)
+                    {
+                        positionXY -= someEntity.MoveSpeed;
+                    }
+                    else
+                    {
+                        positionXY -= someEntity.MoveSpeed - 1;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void GetRandomDirection(ref RandomDirection randomDirection)
+        {
+            int someDiraction = Randomyzer.rndAction.Next(0, 3);
+
+            switch (someDiraction)
+            {
+                case 0:
+                    randomDirection = RandomDirection.Left;
+                    break;
+                case 1:
+                    randomDirection = RandomDirection.Up;
+                    break;
+                case 2:
+                    randomDirection = RandomDirection.Right;
+                    break;
+                case 3:
+                    randomDirection = RandomDirection.Down;
+                    break;
+            }
+        }
     }
 }

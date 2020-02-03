@@ -4,17 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using OceanDemoProj.Interface;
+
 namespace OceanDemoProj
 {
-    abstract class Cell
+    abstract class Cell //: ICellContainer
     {
-        #region =====----- PRIVATE DATA -----=====
+        #region ======------ PUBLIC DATA -----======
 
-        protected readonly Ocean _owner;
-        protected Coordinate _coordinate;
+        public int MoveSpeed;
 
         #endregion
 
+        #region =====----- PRIVATE DATA -----=====
+
+        protected readonly ICellContainer _owner;
+        protected Coordinate _coordinate;
+
+        #endregion
 
         #region =====----- CTOR -----=====
 

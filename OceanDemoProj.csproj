@@ -48,6 +48,8 @@
     <Compile Include="Constants\DefaultSettings.cs" />
     <Compile Include="Enum\DefaultImage.cs" />
     <Compile Include="Enum\RandomDirection.cs" />
+    <Compile Include="Interface\ICellContainer.cs" />
+    <Compile Include="Interface\IOceanView.cs" />
     <Compile Include="Obstacle.cs" />
     <Compile Include="Ocean.cs" />
     <Compile Include="OceanRandomInitializer.cs" />

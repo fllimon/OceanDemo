@@ -10,8 +10,6 @@ namespace OceanDemoProj
 {
     class Prey : Cell
     {
-        
-
         #region ======----- PROPERTIES -----=====
 
         public override char Image 
@@ -34,5 +32,12 @@ namespace OceanDemoProj
 
         #endregion
 
+        //public virtual void MoveFrom()
+        //{
+        //    if (Position.X <= _owner.NumRows)
+        //    {
+        //        _owner.GetRandomDirection()
+        //    }
+        //}
     }
 }

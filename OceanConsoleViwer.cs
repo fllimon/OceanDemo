@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using OceanDemoProj.Interface;
+
 namespace OceanDemoProj
 {
     class OceanConsoleViwer
     {
         #region ======------ PRIVATE DATA -----======
 
-        private readonly Ocean _ocean;
+        private readonly IOceanView _ocean;
 
         #endregion
 

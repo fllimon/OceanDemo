@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+
+using OceanDemoProj.Enum;
 
 namespace OceanDemoProj
 {
@@ -20,7 +22,6 @@ namespace OceanDemoProj
 
             oceanRandomInitializer.Run();
             viewEntity.Show();
-           
 
             Console.ReadKey();
         }

@@ -59,6 +59,8 @@ namespace OceanDemoProj
 
         #endregion
 
+        
+
         public Coordinate GetCoordEmptyCell()
         {
             Coordinate coordinate = null;
